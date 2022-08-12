@@ -1,6 +1,5 @@
 import Button from '../../components/button/button.component'
 import { useState } from "react";
-import { ThemeProvider } from "react-bootstrap";
 import FormInput from "../form-input/form-input.component";
 
 import {
@@ -21,6 +20,10 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -31,8 +34,8 @@ const SignUpForm = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         createUserDocumentFromAuth(user, { displayName });
+        resetFormFields();
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -45,9 +48,9 @@ const SignUpForm = () => {
 
   const handleChange = (event) => {
     // console.log(event.target.id);
-    const { id, value } = event.target;
-    setFormFields({ ...formFields, [id]: value });
-    console.log(formFields);
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  
   };
 
   return (

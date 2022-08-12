@@ -22,7 +22,7 @@ const Navigation = () => {
           >
             <Nav className="lg-auto">
               <Nav.Link href="/"><h5>HOME</h5></Nav.Link>
-              <Nav.Link href="/signIn"><h5>SIGN IN</h5></Nav.Link>
+              <Nav.Link href="/auth"><h5>SIGN IN</h5></Nav.Link>
               <Nav.Link href="/shop"><h5>SHOP</h5></Nav.Link>
               <Nav.Link href="/contact"><h5>CONTACT</h5></Nav.Link>
             </Nav>
