@@ -1,8 +1,10 @@
 import Button from "../../components/button/button.component";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FormInput from "../form-input/form-input.component";
 import { signInAuthWithEmailAndPassword } from "../../untils/firebase/firebase.untils";
 import './sign-in-form.scss'
+
+import { UserContext } from "../../contexts/user.context";
 
 import {
   signInWithGooglePopup,
@@ -17,6 +19,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const {setCurrentUser} = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -40,6 +43,8 @@ const SignInForm = () => {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
+      
+      setCurrentUser(user);
       resetFormFields();
     })
     .catch((error) => {
