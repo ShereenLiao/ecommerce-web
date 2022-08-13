@@ -1,6 +1,7 @@
 import Button from '../../components/button/button.component'
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FormInput from "../form-input/form-input.component";
+import { UserContext } from '../../contexts/user.context';
 
 import {
   createUserDocumentFromAuth,
@@ -19,6 +20,8 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  
+  const {setCurrentUser, currentUser} = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -35,6 +38,7 @@ const SignUpForm = () => {
         // Signed in
         const user = userCredential.user;
         createUserDocumentFromAuth(user, { displayName });
+        setCurrentUser(user);
         resetFormFields();
       })
       .catch((error) => {
@@ -86,12 +90,12 @@ const SignUpForm = () => {
         />
 
         <FormInput
-          label="Password"
+          label="confirmedPassword"
           type="password"
           name="confirmPassword"
           onChange={handleChange}
           required
-          value={password}
+          value={confirmPassword}
         />
         <Button type='submit'>Sign Up</Button>
       </form>
