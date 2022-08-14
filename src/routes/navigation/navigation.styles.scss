@@ -19,11 +19,9 @@
     justify-content: flex-end;
     align-items: flex-end;
 
-    a.nav-link {
-      padding: 0px 15px;
+    a.nav-link,.card-icon-container {
+      padding: 10px 15px;
       cursor: pointer;
-      color:black;
-  
     }
   }
 }
