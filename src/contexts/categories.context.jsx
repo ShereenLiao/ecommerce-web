@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 import {
   addCollectionAndDocuments,
   getCollectionAndDocuments,
-} from "../untils/firebase/firebase.untils.jsx";
+} from "../untils/firebase/firebase.utils.jsx";
 
 //as the default value you want to access
 export const CategoriesContext = createContext({
