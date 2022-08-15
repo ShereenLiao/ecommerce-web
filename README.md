@@ -76,4 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - deploy with netlify
 - use context manage state
 - use firebase to authenticate
-- use cloud firestore to store data
+- use cloud firestore to store date
+- use reducers to optimize performance for components that trigger deep updates in Cart components
+- use listeners in observer pattern to centralize the code into context
